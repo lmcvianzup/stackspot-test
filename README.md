@@ -13,6 +13,8 @@
 
 - importar uma stack: `stk-legacy import stack %cd%\jornada-stackspot`
 
+- criar uma app apartir de uma stack: `stk-legacy create app test-app --stackfile test-stack/processMediator`
+
 ## [Jinja](https://jinja.palletsprojects.com/en/3.0.x/templates/)
 
 ## config
