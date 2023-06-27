@@ -1,0 +1,39 @@
+name: base-template
+description: template de teste para o stackspot
+types:
+  - app-template
+inputs:
+  - label: Project name
+    type: text
+    name: project_name
+    default: project-name
+    global: true # todo plugin tem acesso a essa variável
+ 
+  - label: project group
+    type: text
+    name: group_name
+    default: userrede.qv
+    pattern: "\\w+(\\.\\w+)*"
+
+  - label: project package name
+    type: text
+    name: project_package_name
+    pattern: "\\w+(\\.\\w+)*"
+ 
+  - label: mediator package name
+    type: text
+    name: package_name
+    default: config.mediator
+    pattern: "\\w+(\\.\\w+)*"
+
+computed-inputs:
+  package_prefix: "br.com"
+  mediator_base_package_default: base
+global-computed-inputs:
+  mediator_package_name: "{{computed_inputs.package_prefix}}.{{group_name}}.{{project_package_name}}.{{package_name}}"
+  mediator_package_dir: "{{global_computed_inputs.mediator_package_name|replace('.','/')}}"
+
+  mediator_base_package_name: "{{global_computed_inputs.mediator_package_name}}.{{computed_inputs.mediator_base_package_default}}"
+  mediator_base_package_dir: "{{global_computed_inputs.mediator_base_package_name|replace('.','/')}}"
+   #ediator_base_package_dir: "{{global_computed_inputs.mediator_package_name}}"
+  

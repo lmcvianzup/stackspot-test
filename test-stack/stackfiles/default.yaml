@@ -1,0 +1,5 @@
+type: app
+description: Default stackfile usecase description
+# template used to create the project
+template: jornada-stackspot/base-template
+# list of plugins to be applied after project creation

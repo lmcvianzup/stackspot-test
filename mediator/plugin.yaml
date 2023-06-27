@@ -1,0 +1,52 @@
+name: mediator
+description: criar mediadores baseados no template
+display-name: mediator
+picture: plugin.png
+category: backend # Ref: https://docs.stackspot.com/docs/create-stacks/yaml-files/plugin/#category
+compatibility:
+  - java
+  - spring
+about: docs/about.md
+usage: docs/usage.md
+use-case: docs/use-case.md
+implementation: docs/implementation.md
+technologies: # Ref: https://docs.stackspot.com/docs/create-stacks/yaml-files/yaml/#technologies
+  - "Api"
+types:
+  - app
+inputs:
+  - label: mediator name
+    type: text
+    name: base_name
+  
+  - label: create sample?
+    type: bool
+    name: use_samples
+    default: true
+computed-inputs:
+  packageNameFormated: "{{packageName|lower}}"
+  package_full_name: "{{global_computed_inputs.mediator_package_name}}.{{base_name}}"
+  package_full_dir: "{{computed_inputs.package_full_name|replace('.','/')}}"
+  dto_name: "{{base_name}}Dto"
+  dto_name_capitalized: "{{base_name|capitalize}}Dto"
+  dto_full_name: "{{computed_inputs.package_full_name}}.dto.{{computed_inputs.dto_name}}"
+
+  
+hooks:
+  - type: edit
+    path: test.md
+    trigger: after-render
+    changes:
+      - search:
+          string: "lorem ipsum"
+          insert-after:
+            snippet: snippets/test.md
+          when:
+            not-exists-snippet: snippets/test.md 
+  - type: render-templates
+    path: snippets/samples
+    trigger: after-render
+    condition:
+      variable: use_samples
+      operator: ==
+      value: true
