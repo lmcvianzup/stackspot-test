@@ -1,5 +1,5 @@
 type: app
 description: criar um mediador de processamento
-template: jornada-stackspot/base-template
+template: test-stack/base-template
 plugins:
-  - plugin: jornada-stackspot/mediator
+  - plugin: test-stack/mediator
