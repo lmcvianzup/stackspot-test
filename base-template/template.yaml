@@ -12,7 +12,6 @@ inputs:
   - label: project group
     type: text
     name: group_name
-    default: userrede.qv
     pattern: "\\w+(\\.\\w+)*"
 
   - label: project package name

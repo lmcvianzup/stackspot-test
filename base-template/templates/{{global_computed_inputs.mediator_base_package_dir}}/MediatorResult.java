@@ -1,4 +1,4 @@
-package {{group_id}}.{{package_name}};
+package {{global_computed_inputs.mediator_package_name}};
 
 
 import lombok.Getter;
